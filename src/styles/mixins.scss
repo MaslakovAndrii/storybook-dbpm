@@ -1,0 +1,464 @@
+@use "src/styles/palette";
+@import "src/styles/variables.scss";
+
+@mixin margin-left-variant($pix) {
+  margin-left: $pix !important;
+}
+
+@mixin margin-right-variant($pix) {
+  margin-right: $pix !important;
+}
+
+@mixin margin-top-variant($pix) {
+  margin-top: $pix !important;
+}
+
+@mixin margin-bottom-variant($pix) {
+  margin-bottom: $pix !important;
+}
+
+@mixin margin-variant($pix) {
+  margin: $pix !important;
+}
+
+@mixin padding-variant($pix) {
+  padding: $pix !important;
+}
+
+@mixin padding-left-variant($pix) {
+  padding-left: $pix !important;
+}
+
+@mixin padding-right-variant($pix) {
+  padding-right: $pix !important;
+}
+
+@mixin padding-top-variant($pix) {
+  padding-top: $pix !important;
+}
+
+@mixin padding-bottom-variant($pix) {
+  padding-bottom: $pix !important;
+}
+
+@mixin linearGradient {
+  background: linear-gradient(
+      0deg,
+      palette.white(2, "old"),
+      palette.white(2, "old")
+    ),
+    palette.white(100);
+}
+
+@mixin flex-center {
+  @include align-center;
+  justify-content: center;
+}
+
+@mixin align-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin h1-title() {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: 0.03em;
+  color: palette.black(2, "old");
+}
+
+@mixin title-48px() {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 58px;
+  letter-spacing: 0.03em;
+  color: palette.black(2, "old");
+  user-select: none;
+}
+
+@mixin title-12px {
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.03em;
+  color: palette.grey(30, "old");
+  user-select: none;
+}
+
+@mixin title-19px() {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+  color: palette.grey(31, "old");
+  user-select: none;
+}
+
+@mixin h2-title() {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+  color: palette.grey(30, "old");
+}
+
+@mixin h1-16px() {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+  color: palette.black(2, "old");
+}
+
+@mixin h3-title() {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.03em;
+  color: palette.grey(31, "old");
+}
+
+@mixin text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: nowrap;
+}
+
+@mixin card() {
+  background: palette.white(100);
+  border-radius: 8px;
+}
+
+@mixin button1() {
+  @include linearGradient;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  @include h2-title;
+  color: palette.blue(100);
+
+  &:hover {
+    color: palette.blue(19, "old");
+  }
+}
+
+@mixin lightButton() {
+  @include linearGradient;
+  border-radius: 8px;
+  @include h1-16px;
+  color: palette.blue(100);
+  @include flex-center;
+  font-weight: normal;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+@mixin primaryButton() {
+  background: palette.blue(100);
+  border-radius: 8px;
+  @include h1-16px;
+  color: palette.white(100);
+  @include flex-center;
+  font-weight: normal;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+@mixin outlineSecondaryButton() {
+  background: inherit;
+  border: 1px solid $secondary_light_color;
+  border-radius: 8px;
+  @include flex-center;
+  font-size: 16px;
+  line-height: 19px;
+  @include align-center;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: palette.red(2, "old");
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+@mixin tooltip() {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  @include flex-center;
+  letter-spacing: 0.03em;
+  color: palette.white(100);
+  background: palette.black(2, "old");
+  border-radius: 5px;
+}
+
+@mixin link() {
+  color: palette.blue(100);
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: all 0.5s ease;
+  user-select: none;
+  background: inherit;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+    color: palette.blue(14, "old");
+  }
+}
+
+@mixin dialog-box() {
+  background: palette.white(100);
+  box-shadow: 0 4px 10px -3px palette.black(4, "old");
+  border-radius: 16px;
+  @include flex-center;
+  flex-direction: column;
+}
+
+@mixin scenario-rightpanel-title() {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.03em;
+  color: palette.black(2, "old");
+  margin-bottom: 12px;
+  margin-top: 20px;
+  margin-left: 16px;
+}
+
+@mixin cube-rounded-btn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  color: palette.white(100);
+  font-size: 24px;
+  background: palette.black(2, "old");
+  @include flex-center;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 101;
+}
+
+@mixin signInBtn {
+  background: palette.white(100);
+  border: 1px solid palette.white(15, "old");
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+  color: palette.grey(5, "old");
+  padding: 10px 16px 11px 16px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+
+  &:hover {
+    transition: all 0.4s ease;
+    background: palette.grey(17, "old");
+  }
+}
+
+@mixin scrollbar($height: auto) {
+  &::-webkit-scrollbar-thumb {
+    background-color: palette.grey(11, "old");
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 6px;
+    overflow: hidden;
+    margin-top: 0;
+  }
+
+  &::-webkit-scrollbar {
+    background: palette.white(8, "old");
+    width: 7px;
+    height: $height;
+    border-bottom-right-radius: 6px;
+    cursor: pointer;
+  }
+}
+
+@mixin header-20px {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.03em;
+  color: palette.black(2, "old");
+}
+
+@mixin tooltip-description($top, $left: auto, $right: auto) {
+  top: $top;
+  left: $left;
+  right: $right;
+  position: absolute;
+  font-size: 12px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid;
+  border-radius: 50%;
+  line-height: 1;
+  background: palette.grey(5, "old");
+  color: palette.white(100);
+  cursor: pointer;
+  box-sizing: border-box;
+  @include flex-center;
+  letter-spacing: -1px;
+}
+
+@mixin parameter-type {
+  color: palette.grey(30, "old");
+  font-size: 11px;
+  position: absolute;
+  background: palette.white(100);
+  z-index: 100;
+  transition: all 2s ease;
+  padding: 2px;
+  box-sizing: border-box;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border: 2px solid palette.blue(100);
+  border-bottom: none;
+}
+
+@mixin modal-root {
+  background: palette.white(100);
+  box-shadow: 0px 4px 10px palette.black(4, "old");
+  border-radius: 16px;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+@mixin modal-title {
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: palette.black(2, "old");
+}
+
+@mixin modal-subtitle(
+  $color: palette.grey(30, "old"),
+  $font-size: 16px,
+  $font-weight: 400
+) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: 140%;
+  letter-spacing: 0.03em;
+  color: $color;
+}
+
+@mixin main-bg {
+  background: url(../assets/png/main-bg.png),
+    linear-gradient(0deg, palette.white(2, "old"), palette.white(2, "old"));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+}
+
+@mixin anyText(
+  $color: palette.grey(5, "old"),
+  $font-size: 16px,
+  $font-weight: 400,
+  $line-height: 19px
+) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $line-height;
+  color: $color;
+}
+
+@mixin svgPathColor($color, $opacity: 1) {
+  & .icon {
+    & > svg {
+      opacity: $opacity;
+      path {
+        stroke: $color;
+      }
+    }
+  }
+}
+
+@mixin customButton {
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  overflow: hidden;
+
+  @include flex-center;
+
+  &:not([disabled]):hover {
+    cursor: pointer;
+  }
+}
+
+@mixin setColor($color, $bgColor, $borderColor: $color) {
+  color: $color;
+  background: $bgColor;
+  border-color: $borderColor;
+  @include svgPathColor($color);
+}
+
+// @import url("https:fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap");
+@mixin setFont($fWeight, $fFamily, $fSize, $fLineHeight, $fColor: inherit) {
+  font-weight: $fWeight;
+  font-family: $fFamily;
+  font-size: $fSize;
+  line-height: $fLineHeight;
+  color: $fColor;
+  font-style: normal;
+}
+
+@mixin h1($weight: 900) {
+  @include setFont($weight, "Gilroy, Lato", 58px, 72px);
+}
+
+@mixin h2($weight: 900) {
+  @include setFont($weight, "Gilroy, Lato", 45px, 56px);
+}
+
+@mixin h3($weight: 800) {
+  @include setFont($weight, "Gilroy, Lato", 32px, 40px);
+}
+
+@mixin h4($weight: 800) {
+  @include setFont($weight, "Gilroy, Lato", 19px, 24px);
+}
+
+@mixin h5($weight: 400) {
+  @include setFont($weight, "Mulish, Lato", 18px, 24px);
+}
+
+@mixin h6($weight: 800) {
+  @include setFont($weight, "Gilroy, Lato", 16px, 20px);
+}
+
+@mixin h7($weight: 400) {
+  @include setFont($weight, "Mulish, Lato", 15px, 20px);
+}
+
+@mixin h8($weight: 700) {
+  @include setFont($weight, "Gilroy, Lato", 13px, 16px);
+}
+
+@mixin h9($weight: 400) {
+  @include setFont($weight, "Mulish, Lato", 12px, 16px);
+}

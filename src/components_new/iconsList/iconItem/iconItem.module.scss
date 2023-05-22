@@ -1,0 +1,23 @@
+.icon {
+  &.svgFill {
+    fill: #1b243d;
+  }
+
+  &.svgStroke {
+    stroke: #1b243d;
+  }
+
+  &.pathFill {
+    & path,
+    circle {
+      fill: #1b243d;
+    }
+  }
+
+  &.pathStroke {
+    & path,
+    circle {
+      stroke: #1b243d;
+    }
+  }
+}

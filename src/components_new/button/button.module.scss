@@ -1,0 +1,143 @@
+@use "src/styles/palette";
+@import "src/styles/mixins.scss";
+
+.root {
+  @include customButton;
+  @include anyText(palette.white(100), 19px, 800, 128%);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  column-gap: 11px;
+  min-width: 168px;
+
+  & > .icon {
+    position: relative;
+    width: 24px;
+    height: 24px;
+
+    & > svg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      path {
+        stroke-width: 2;
+        stroke: palette.white(100);
+      }
+    }
+  }
+
+  &:not([disabled]):hover {
+    @include setColor(palette.white(100), palette.blue(400), palette.blue(400));
+  }
+
+  &:not([disabled]):focus {
+    @include setColor(palette.white(100), palette.blue(200), palette.blue(200));
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+
+    &.primary,
+    &.secondary {
+      @include setColor(palette.white(100), palette.blue(048));
+    }
+  }
+
+  &.primary {
+    background-color: palette.blue(100);
+    &.s {
+      @include svgPathColor(palette.blue(100));
+    }
+  }
+
+  &.secondary {
+    @include setColor(palette.blue(100), palette.white(100));
+  }
+
+  &.module {
+    @include setColor(palette.blue(100), palette.white(100));
+    min-width: 256px;
+    border-style: dashed;
+
+    &.xl,
+    &.l,
+    &.m {
+      background-color: transparent;
+      border: 1.5px dashed palette.blue(100);
+    }
+
+    &.s {
+      border: none;
+    }
+
+    &:not([disabled]):hover {
+      @include setColor(palette.blue(400), transparent);
+    }
+
+    &:not([disabled]):focus {
+      @include setColor(palette.blue(200), transparent);
+    }
+  }
+
+  &.back {
+    max-width: 124px;
+    padding: 12px 24px;
+    @include svgPathColor(palette.blue(100));
+
+    @include setColor(
+      palette.blue(100),
+      rgba(palette.blue(200), 0.08),
+      transparent
+    );
+
+    &:not([disabled]):hover {
+      @include setColor(
+        palette.blue(100),
+        rgba(palette.blue(200), 0.16),
+        transparent
+      );
+    }
+    &:not([disabled]):focus {
+      @include setColor(palette.white(100), palette.blue(200));
+    }
+  }
+
+  &.xl {
+    padding: 24px 32px;
+  }
+
+  &.l {
+    padding: 16px 32px;
+  }
+
+  &.m {
+    padding: 12px 32px;
+  }
+
+  &.s {
+    @include anyText(palette.blue(100), 15px, 700, 132%);
+    background-color: transparent;
+    border: none;
+    min-width: 49px;
+
+    & > .icon {
+      width: 18px;
+      height: 16px;
+    }
+
+    &:disabled {
+      // add the desired color when it appears in the design
+      @include setColor(palette.grey(16, "old"), transparent);
+    }
+
+    &:not([disabled]):hover {
+      @include setColor(palette.blue(400), transparent);
+    }
+
+    &:not([disabled]):focus {
+      @include setColor(palette.blue(200), transparent);
+    }
+  }
+}

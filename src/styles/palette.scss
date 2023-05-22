@@ -1,0 +1,301 @@
+@use "sass:map";
+
+// use palette:
+// 1. At the beginning of the file where the palette is used, you need to initialize it: @use 'src/style/palette'
+// 2. After that the following syntax will be available: palette.color(code, version-palette).
+// 3. version-palette is an optional parameter. The default is "new-palette".
+
+$ORANGE: "orange-palette";
+$BLUE: "blue-palette";
+$RED: "red-palette";
+$WHITE: "white-palette";
+$GREY: "grey-palette";
+$GREEN: "green-palette";
+$PURPLE: "purple-palette";
+$BLACK: "black-palette";
+
+$new-scheme: (
+  #{$ORANGE}: (
+      100: #f3ba27,
+      064: #f3ba27a3,
+      048: #f3ba277a,
+      032: #f3ba2752,
+      024: #f3ba273d,
+      016: #f3ba2729,
+      008: #f3ba2714,
+    ),
+  #{$BLUE}: (
+      400: #347cbf,
+      200: #5d9ef3,
+      100: #2084e1,
+      064: #2084e1a3,
+      048: #2084e17a,
+      032: #2084e152,
+      024: #2084e13d,
+      016: #2084e129,
+      008: #2084e114,
+    ),
+  #{$RED}: (
+      100: #f50041,
+    ),
+  #{$GREEN}: (
+      100: #11bd37,
+    ),
+  #{$WHITE}: (
+      100: #ffffff,
+      072: #ffffffb8,
+      060: #ffffff99,
+      032: #ffffff52,
+      016: #ffffff29,
+    ),
+  #{$GREY}: (
+      400: #1b243d,
+      100: #303757,
+      072: #303757b8,
+      056: #3037578f,
+      040: #30375766,
+      032: #30375752,
+      016: #30375729,
+      004: #3037570a,
+    )
+);
+
+$old-scheme: (
+  #{$GREY}: (
+      1: #3037570a,
+      2: #6f6f7a,
+      3: #4f4e4e,
+      4: #4d4d4d,
+      5: #333333,
+      6: #5f5d5d,
+      7: #7c7c7c,
+      8: #757575,
+      9: #ccc,
+      10: #c5c5c5,
+      11: #cecece,
+      12: #bdbdbd33,
+      13: #bdbdbd80,
+      14: #919fad,
+      15: #e3e3e3,
+      16: #939393,
+      17: #e9e9e9,
+      18: #e8e8e8cc,
+      19: #1d1d1d21,
+      20: #1d1d1d27,
+      21: #eeeeee38,
+      22: #ecedefcc,
+      23: #c7c9d1,
+      24: #dbebfa,
+      25: #b1b0b0,
+      26: #59595933,
+      27: #595959cc,
+      28: #e9e9e980,
+      29: #e9e9e933,
+      30: #595959,
+      31: #949494,
+      // #636363 - use for lighthouse
+      32: #ffffff8a,
+      33: #94949499,
+    ),
+  #{$BLUE}: (
+      1: #2084e14d,
+      2: #2084e133,
+      3: #2084e129,
+      4: #2084e11a,
+      5: #2084e114,
+      6: #2084e10a,
+      7: #2084e1e3,
+      8: #2084e1,
+      9: #2084e100,
+      10: #296fb2,
+      11: #2084e13a,
+      12: #1d3d67,
+      13: #0c72d1,
+      14: #5aa1e2,
+      15: #02162c,
+      16: #347cbf14,
+      17: #6b8da673,
+      18: #1864ac,
+      19: #1b71c1,
+      20: #2079cd,
+      21: #1d3d66,
+      22: #0000ff,
+      23: #2084e11f,
+      24: #2084e16f,
+      25: #223c500a,
+      26: #3d3d6629,
+      27: #1d266614,
+      28: #2084e138,
+    ),
+  #{$GREEN}: (
+      1: #34bfbf66,
+      2: #11bd3633,
+      3: #51db7f17,
+      4: #055c05,
+      5: #53ac5363,
+      6: #28ff44,
+      7: #11bd37,
+      8: #12b654,
+      9: #1d266714,
+      10: #adf8ad,
+      11: #d6f2e7,
+      12: #d2f4f0,
+      13: #ddf4e2,
+      14: #34bfbf,
+      15: #50db7e17,
+      16: #c3efcfc7,
+    ),
+  #{$RED}: (
+      1: #ff0000,
+      2: #da2e2e,
+      3: #fa4646,
+      4: #ac2b2b,
+      5: #fab8b8,
+    ),
+  #{$PURPLE}: (
+      1: #7575a1,
+      2: #63058f,
+      3: #cb38ce,
+      4: #cc38cf66,
+      5: #6161cf66,
+      6: #cfcfe9,
+      7: #dfdff5,
+      8: #6161cf33,
+      9: #6161cf,
+      10: #f5d6f5,
+      11: #f5d7f5,
+    ),
+  #{$ORANGE}: (
+      1: #e16530,
+      2: #f3ba27,
+      3: #e7af21,
+      4: #9b510b,
+      5: #e7af2166,
+      6: #e1653066,
+      7: #f1c93d,
+      8: #fbedce,
+      9: #f8ded2,
+      10: #fadfad5e,
+      11: #fae4da,
+      12: #e8c54c,
+      13: #dc5b05,
+      14: #e7af2133,
+      15: #f3ba2714,
+      16: #7e3e02,
+    ),
+  #{$WHITE}: (
+      1: #ffffff29,
+      2: #ecedef66,
+      3: #ffffff33,
+      4: #ffffff00,
+      5: #ffffff3d,
+      6: #ffffffb8,
+      7: #fbfbfb,
+      8: #f1f1f1,
+      9: #f3f3f3,
+      10: #f7f8f9,
+      11: #ecedef,
+      12: #f0efef,
+      13: #ebebeb,
+      14: #ededed,
+      15: #e0e0e0,
+      16: #d4e0ed,
+      17: #ddebfb,
+      18: #f7f7f7,
+      19: #dddddd,
+      20: #eef6fd,
+      21: #dbecfa,
+      22: #e1e4e6,
+      23: #ffffff66,
+      24: #e9e9e97a,
+    ),
+  #{$BLACK}: (
+      1: #000,
+      2: #1d1d1d,
+      3: #1d1d1d9f,
+      4: #00000014,
+      5: #00000021,
+      6: #0000003b,
+      7: #1d1d1da3,
+      8: #1d1d1dcc,
+      9: #373737,
+      10: #0000003d,
+      11: #1d1d1d29,
+      12: #1d1d1de6,
+      13: #0000008a,
+      14: #1c1c1c0a,
+      15: #1d1d1db3,
+    )
+);
+
+$schema-versions: (
+  "new": $new-scheme,
+  "old": $old-scheme,
+);
+
+@function get-base-map($version: null, $key: null) {
+  $DEFAULT_VERSION: "new";
+
+  @if not $version {
+    $version: $DEFAULT_VERSION;
+  }
+
+  @if not map.has-key($schema-versions, $version) {
+    @error "Scheme named '#{$version}' does not exist.";
+  }
+
+  $use-scheme: map.get($schema-versions, $version);
+
+  @if not map.has-key($use-scheme, $key) {
+    @error "Map $color-schemes has no '#{$key}' key.";
+  }
+
+  @return map.get($use-scheme, $key);
+}
+
+@function get-base-color($key: null, $code: null, $version: null) {
+  $DEFAULT_CODE: 100;
+  $palette: get-base-map($version, $key);
+
+  @if not $code {
+    $code: $DEFAULT_CODE;
+  }
+
+  @if not map.has-key($palette, $code) {
+    @error "Map $color-scheme has no '#{$code}' code.";
+  }
+
+  @return map.get($palette, $code);
+}
+
+@function orange($code: null, $version: null) {
+  @return get-base-color($ORANGE, $code, $version);
+}
+
+@function blue($code: null, $version: null) {
+  @return get-base-color($BLUE, $code, $version);
+}
+
+@function red($code: null, $version: null) {
+  @return get-base-color($RED, $code, $version);
+}
+
+@function white($code: null, $version: null) {
+  @return get-base-color($WHITE, $code, $version);
+}
+
+@function grey($code: null, $version: null) {
+  @return get-base-color($GREY, $code, $version);
+}
+
+@function green($code: null, $version: null) {
+  @return get-base-color($GREEN, $code, $version);
+}
+
+@function black($code: null, $version: null) {
+  @return get-base-color($BLACK, $code, $version);
+}
+
+@function purple($code: null, $version: null) {
+  @return get-base-color($PURPLE, $code, $version);
+}

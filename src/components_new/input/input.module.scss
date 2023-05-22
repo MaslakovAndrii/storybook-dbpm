@@ -1,0 +1,287 @@
+@use "src/styles/palette";
+@import "src/styles/mixins.scss";
+
+.root {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.inputContainer {
+  position: relative;
+  padding: 0 1px;
+  cursor: text;
+  border: 1.5px solid transparent;
+  @include svgPathColor(palette.grey(100), 0.56);
+  &.inactive {
+    cursor: not-allowed;
+    & .input {
+      cursor: not-allowed;
+    }
+
+    & .placeholder {
+      color: palette.grey(040);
+    }
+  }
+
+  &.focus {
+    & .label {
+      color: palette.blue(100);
+    }
+
+    & .input {
+      color: palette.grey(100);
+      caret-color: palette.blue(100);
+    }
+  }
+
+  &.error {
+    & .label {
+      color: palette.red(100);
+    }
+
+    & .input {
+      color: rgba(palette.grey(100), 0.8);
+    }
+  }
+
+  &.locked {
+    cursor: default;
+    & .label {
+      color: palette.grey(040) !important;
+    }
+
+    & .input {
+      cursor: default;
+    }
+  }
+
+  &.paddingRight {
+    padding-right: 39px !important;
+  }
+
+  & .icon {
+    width: 20px;
+    height: 20px;
+    @include flex-center;
+  }
+
+  &.primary {
+    background: linear-gradient(
+        0deg,
+        palette.grey(1, "old"),
+        palette.grey(1, "old")
+      ),
+      palette.white(100);
+    border: 1.5px solid palette.blue(016);
+    border-radius: 8px;
+    padding: 0 14.5px 0;
+
+    &.primaryL {
+      padding: 24.5px 16.5px 8.5px 14.5px;
+
+      & .icon {
+        right: 14.5px;
+      }
+
+      & ~ .errorText {
+        padding: 0 14.5px;
+      }
+    }
+
+    &.primaryS {
+      padding: 8.5px 14.5px;
+      background: palette.white(100);
+
+      &.inactive {
+        background: linear-gradient(
+            0deg,
+            palette.grey(1, "old"),
+            palette.grey(1, "old")
+          ),
+          palette.white(100);
+      }
+
+      &.error {
+        @include svgPathColor(palette.red(100));
+      }
+
+      & .icon {
+        right: 8.5px;
+      }
+
+      & .label {
+        display: none;
+      }
+    }
+
+    &.focus {
+      background: palette.white(100);
+      border-color: palette.blue(100);
+    }
+
+    &.inactive {
+      border-color: transparent;
+    }
+
+    &.error {
+      background: palette.white(100);
+      border-color: palette.red(100);
+    }
+
+    &:not(.inactive):not(.error):not(.locked):not(.focus):hover {
+      border-color: palette.blue(032);
+    }
+
+    &.locked {
+      border-color: palette.grey(040);
+      cursor: default;
+    }
+  }
+
+  &.table {
+    background: palette.white(100);
+    border-bottom: 1.5px solid palette.blue(016);
+    padding: 0 14.5px 0;
+    padding: 24.5px 1px 8.5px 1px;
+
+    & .icon {
+      right: 14.5px;
+    }
+
+    &.focus {
+      border-bottom-color: palette.blue(100);
+    }
+
+    &.inactive {
+      border-bottom-color: palette.grey(016);
+    }
+
+    &.error {
+      border-bottom-color: palette.red(100);
+    }
+
+    &:not(.inactive):not(.error):not(.locked):not(.focus):hover {
+      border-bottom-color: palette.blue(032);
+    }
+
+    &.locked {
+      border-bottom-color: palette.grey(040);
+    }
+  }
+
+  .input {
+    min-width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    display: block;
+    @include h7;
+    color: palette.grey(072);
+  }
+
+  .placeholder {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    @include h7;
+    display: inline-block;
+    color: palette.grey(072);
+  }
+
+  .label {
+    @include h9;
+    top: 8px;
+    transform: translateY(0%);
+    color: palette.grey(040);
+  }
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &.search {
+    & .icon {
+      left: 25px;
+    }
+
+    & .label {
+      display: none;
+    }
+
+    &.searchXL {
+      flex-direction: row;
+      background: palette.white(100);
+      box-shadow: 0px 8px 32px palette.green(9, "old");
+      border-radius: 30px;
+      padding: 16px 24px 16px 64px;
+    }
+
+    &.searchL {
+      @extend .primary;
+      padding: 8.5px 14.5px 8.5px 38px;
+      background-color: transparent;
+
+      & .icon {
+        width: 20px;
+        height: 20px;
+        left: 10px;
+      }
+
+      & .input {
+        @include h7;
+      }
+    }
+
+    &.searchM {
+      @extend .primary;
+      @extend .primaryS;
+      padding: 6.5px 16px 6.5px 38px;
+      background-color: transparent;
+
+      & .icon {
+        width: 20px;
+        height: 20px;
+        left: 10px;
+      }
+
+      & .input {
+        @include h9;
+      }
+    }
+
+    &.searchS {
+      @extend .table;
+      @extend .primaryS;
+      padding: 0.5px 1px 4.5px 29px;
+      padding-left: 29px;
+      background-color: transparent;
+
+      & .icon {
+        width: 20px;
+        height: 20px;
+        left: 1px;
+      }
+
+      & .input {
+        @include h9;
+      }
+    }
+  }
+}
+
+.errorText {
+  @include h9;
+  color: palette.red(100);
+  opacity: 0;
+  margin: 4px 0;
+  display: none;
+
+  &.show {
+    display: block;
+    opacity: 1;
+  }
+}

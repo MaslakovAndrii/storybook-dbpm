@@ -1,0 +1,59 @@
+@use "src/styles/palette";
+@import "src/styles/mixins.scss";
+
+.tag {
+  box-sizing: border-box;
+  padding: 2px 1.5px 2px 6px;
+  border-radius: 4px;
+  @include setColor(palette.white(100), palette.blue(100));
+  cursor: default;
+  outline: none;
+  @include flex-center;
+  display: inline-flex;
+  overflow: hidden;
+
+  &.disabled {
+    @include setColor(
+      palette.grey(100),
+      linear-gradient(0deg, palette.blue(016), palette.blue(016)),
+      palette.white(100)
+    );
+    cursor: not-allowed;
+
+    & .button {
+      pointer-events: none;
+      svg {
+        path {
+          stroke: palette.grey(100);
+        }
+      }
+    }
+  }
+
+  &:not(.disabled):hover {
+    background-color: palette.blue(400);
+  }
+
+  &:not(.disabled):focus {
+    background-color: palette.blue(200);
+  }
+
+  .text {
+    margin: 0;
+    display: inline-block;
+    @include h9;
+  }
+
+  .button {
+    @include customButton;
+    @include flex-center;
+    flex: 0 0 16px;
+    svg {
+      width: 100%;
+      height: 100%;
+      path {
+        stroke: palette.white(100);
+      }
+    }
+  }
+}
